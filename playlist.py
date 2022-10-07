@@ -1,27 +1,29 @@
-from pytube import Playlist, YouTube, exceptions
-import pytube
+from pytube import Playlist, YouTube
 
-# playlist_link = 'https://www.youtue.com/playeefd/3st=PL3817D41C7D841E23'
-playlist_link = 'https://www.youtube.com/playlist?list=PL3817D41C7D841E23'
+# playlist_url = 'https://www.youtube.com/playlist?lissfd/*-t=PLr5pQJcv3NjbTTxr--i3wzxsQbwRyASN5'
+playlist_url = 'https://www.youtube.com/playlist?list=PLr5pQJcv3NjbTTxr--i3wzxsQbwRyASN5'
 
+playlist = Playlist(playlist_url)
 
-
-playlist = Playlist(playlist_link)
-youtube_list = []
 try:
     cantidad = len(playlist)
-    for link in playlist:
-        try:
-            youtube_list.append(YouTube(link))
-        except Exception as e:
-                print(e)
 except Exception as e:
-    print(e)
-    print("Error en el recorrido")
+    print("No se pudo obtener la lista\n" + str(e))
 else:
-    for youtube in youtube_list:
-        print(youtube)
-        video = youtube.streams.filter(mime_type="video/mp4", progressive="True")
-        for stream in video:
-            print('\t' + str(stream))
-        # video.download('cache/')
+    print(playlist.title + '\n')
+    for video_url in playlist:
+        try:
+            video = YouTube(video_url)
+        except Exception as e:
+            print("No se pudo obtener video: " + link)
+            print(str(e))
+        else:
+            print("\t" + video.title)
+            try:
+                #obtener stream de mejor calidad
+                stream = video.streams.filter(mime_type="video/mp4", progressive="True")[-1]
+            except Exception as e:
+                print("\tNo se pudo acceder al stream del video" + str(e))
+            else:
+                print("\t\tDescargando:\n\t\t" + str(stream))
+                stream.download('downloads/')
