@@ -1,7 +1,6 @@
 from pytube import Playlist, YouTube
 
-# playlist_url = 'https://www.youtube.com/playlist?lissfd/*-t=PLr5pQJcv3NjbTTxr--i3wzxsQbwRyASN5'
-playlist_url = 'https://www.youtube.com/playlist?list=PL3817D41C7D841E23'
+playlist_url = input("Pege el link de la playlist: ")
 
 playlist = Playlist(playlist_url)
 
@@ -25,5 +24,6 @@ else:
             except Exception as e:
                 print("\tNo se pudo acceder al stream del video" + str(e))
             else:
-                print("\t\tDescargando:\n\t\t" + str(stream))
+                print("\t\tdescargando...\n\t\t" + str(stream))
                 stream.download('downloads/')
+                print("\t\t...completado!\n\t\t" + str(stream))
