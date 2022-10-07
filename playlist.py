@@ -1,7 +1,7 @@
 from pytube import Playlist, YouTube
 
 # playlist_url = 'https://www.youtube.com/playlist?lissfd/*-t=PLr5pQJcv3NjbTTxr--i3wzxsQbwRyASN5'
-playlist_url = 'https://www.youtube.com/playlist?list=PLr5pQJcv3NjbTTxr--i3wzxsQbwRyASN5'
+playlist_url = 'https://www.youtube.com/playlist?list=PL3817D41C7D841E23'
 
 playlist = Playlist(playlist_url)
 
