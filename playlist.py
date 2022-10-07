@@ -1,14 +1,27 @@
-from pytube import Playlist, YouTube
+from pytube import Playlist, YouTube, exceptions
+import pytube
 
-playlist = Playlist('https://www.youtube.com/playlist?list=PL3817D41C7D841E23')
-# print(playlist)
+# playlist_link = 'https://www.youtue.com/playeefd/3st=PL3817D41C7D841E23'
+playlist_link = 'https://www.youtube.com/playlist?list=PL3817D41C7D841E23'
+
+
+
+playlist = Playlist(playlist_link)
 youtube_list = []
-
-for link in playlist:
-    youtube_list.append(YouTube(link))
-
-for youtube in youtube_list:
-    # print(youtube)
-    # video = youtube.streams.filter(only_audio=True, abr='160kbps')[0]
-    video = youtube.streams.filter(file_extension='mp4', abr='128kbps')[0]
-    video.download('cache/')Marn2022
+try:
+    cantidad = len(playlist)
+    for link in playlist:
+        try:
+            youtube_list.append(YouTube(link))
+        except Exception as e:
+                print(e)
+except Exception as e:
+    print(e)
+    print("Error en el recorrido")
+else:
+    for youtube in youtube_list:
+        print(youtube)
+        video = youtube.streams.filter(mime_type="video/mp4", progressive="True")
+        for stream in video:
+            print('\t' + str(stream))
+        # video.download('cache/')

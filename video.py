@@ -1,18 +1,22 @@
 from pytube import YouTube
 
-yt = YouTube('https://youtu.be/laZusNy8QiY?list=PL3817D41C7D841E23')
+link = 'https://youtu.be/laZusNy8QiY?list=PL3817D41C7D841E23'
+# link = 'https://youtu.be/laZusNy8QiY?li=PL3817D41C7D841E23'
 
-print("Video seleccionado:\t" + yt.title)
-# videos = yt.streams
-# videos = yt.streams.filter(file_extension='mp4')
-# videos = yt.streams.filter(only_audio=True)
-# video = yt.streams.filter(only_audio=True, abr='160kbps')
-# video = yt.streams.filter(only_audio=True, abr='160kbps')[0]
-# videos = yt.streams.filter(only_audio=True, file_extension='mp4')
-videos = yt.streams.filter(file_extension='mp4', abr='128kbps')
-print(videos)
+try:
+    yt = YouTube(link)
+except Exception as e:
+    print(e)
+else:
+    print("Video seleccionado:\t" + yt.title)
+    videos = yt.streams.filter(file_extension='mp4')
+    for video in videos:
+        print(video)
+    print(len(videos))
+    # video.download('cache/')
 
-# video.download('cache/')
-
-# print(len(videos))
-
+# (file_extension='mp4')
+# (only_audio=True)
+# (only_audio=True, abr='160kbps')
+# (only_audio=True, abr='160kbps')[0]
+# (only_audio=True, file_extension='mp4')
