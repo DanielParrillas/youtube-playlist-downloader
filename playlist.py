@@ -17,7 +17,7 @@ else:
             print("No se pudo obtener video: " + link)
             print(str(e))
         else:
-            print("\t" + video.title)
+            print("\n\t" + video.title)
             try:
                 #obtener stream de mejor calidad
                 stream = video.streams.filter(mime_type="video/mp4", progressive="True")[-1]
@@ -26,4 +26,4 @@ else:
             else:
                 print("\t\tdescargando...\n\t\t" + str(stream))
                 stream.download('downloads/')
-                print("\t\t...completado!\n\t\t" + str(stream))
+                print("\t\t...completado!\n\n")
