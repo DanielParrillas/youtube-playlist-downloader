@@ -2,7 +2,7 @@ from pytube import Playlist, YouTube
 from termcolor import colored, cprint
 from colorama import Fore, Back, Style
 
-cprint(" ► ", 'green', 'on_red', end=' ')
+cprint(" ► ", 'white', 'on_red', end=' ')
 cprint("YOUTUBE PLAYLIST DOWNLOADER\n", attrs=['bold'])
 playlist_url = input("Pege el link de la playlist: " + Fore.BLUE)
 print(Style.RESET_ALL)
