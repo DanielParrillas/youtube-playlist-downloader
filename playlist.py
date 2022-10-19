@@ -38,5 +38,9 @@ else:
             else:
                 cprint("descargando...", 'green')
                 print(str(stream))
-                stream.download('downloads/')
-                cprint("...completado!", 'blue')
+                try:
+                    stream.download('downloads/')
+                except Exception as e:
+                    cprint("Fallo la descarga", 'red')
+                else:
+                    cprint("...completado!", 'blue')
