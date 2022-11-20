@@ -30,7 +30,7 @@ else:
             print("\n\t" + Fore.BLACK + Back.WHITE + video.title)
             print(Style.RESET_ALL)
             try:
-                #obtener stream de mejor calidad
+                # obtener stream de mejor calidad
                 stream = video.streams.filter(mime_type="video/mp4", progressive="True")[-1]
             except Exception as e:
                 cprint("Error!",'red',attrs=['bold'], end=' ')
