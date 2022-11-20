@@ -24,7 +24,7 @@ else:
             video = YouTube(video_url)
         except Exception as e:
             cprint("Error!",'red',attrs=['bold'], end=' ')
-            print("No se pudo obtener video: " + link)
+            print("No se pudo obtener video: " + video_url)
             print(str(e))
         else:
             print("\n\t" + Fore.BLACK + Back.WHITE + video.title)
