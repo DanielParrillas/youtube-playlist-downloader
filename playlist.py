@@ -1,10 +1,13 @@
 from pytube import Playlist, YouTube
+import os
 
 print("► YOUTUBE PLAYLIST DOWNLOADER\n")
-playlist_url = input("Pege el link de la playlist: ")
 
+path_user_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
+playlist_url = input("Pege el link de la playlist: ")
 playlist = Playlist(playlist_url)
 no_descargados = []
+path_downloads = path_user_downloads + '\\' + playlist.title
 
 try:
     cantidad = len(playlist)
@@ -33,9 +36,12 @@ else:
                 print("descargando...")
                 print(str(stream))
                 try:
-                    stream.download('downloads/')
+                    stream.download(path_downloads)
                 except Exception as e:
                     print("Fallo la descarga")
                     no_descargados.append(video.title)
                 else:
                     print("...completado!")
+
+print("Encuentra los videos en la carpeta", playlist.title,"dentro de Descargas")
+print("Videos no descargados:", no_descargados)
