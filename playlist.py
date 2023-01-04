@@ -28,7 +28,7 @@ else:
             print("\n\t" + video.title)
             try:
                 # obtener stream de mejor calidad
-                stream = video.streams.filter(mime_type="video/mp4", progressive="True")[-1]
+                stream = video.streams.filter(mime_type="video/mp4", progressive=True)[-1]
             except Exception as e:
                 print("Error!", end=' ')
                 print("\tNo se pudo acceder al stream del video" + str(e))
@@ -43,5 +43,5 @@ else:
                 else:
                     print("...completado!")
 
-print("Encuentra los videos en la carpeta", playlist.title,"dentro de Descargas")
+print("Encuentra los videos en la carpeta", playlist.title, "dentro de Descargas")
 print("Videos no descargados:", no_descargados)
