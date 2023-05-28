@@ -1,10 +1,10 @@
 from pytube import Playlist, YouTube
 import os
 
-print("► YOUTUBE PLAYLIST DOWNLOADER\n")
+print("🟥 YOUTUBE PLAYLIST DOWNLOADER\n")
 
 path_user_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
-playlist_url = input("Pegue el link de la playlist: ")
+playlist_url = input("🎵Pegue el link de la playlist: ")
 playlist = Playlist(playlist_url)
 no_descargados = []
 path_downloads = path_user_downloads + '\\' + playlist.title
